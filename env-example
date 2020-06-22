@@ -1,0 +1,7 @@
+FIREBASE_API_KEY = xxxxx-xxxxx-xxxxx-xxxxx-xxxxx-
+FIREBASE_AUTH_DOMAIN = xxx-xxxxx
+FIREBASE_DATA_BASE_URL= https://xxx-xxxx-xxxx.firebaseio.com
+FIREBASE_PROJECT_ID = fir-demo-1234
+FIREBASE_STORAGE_BUCKET = fir-demo-10290.appspot.com
+FIREBASE_MESSAGING_SENDER_ID = 123456789
+FIREBASE_APP_ID = x:1920292929:xxxx:xxxxxxxxxx
