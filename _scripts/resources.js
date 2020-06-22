@@ -1,3 +1,5 @@
+// https://www.joshmorony.com/adding-icons-splash-screens-launch-images-to-capacitor-projects/
+
 const fs = require('file-system');
 
 const SOURCE_IOS_ICON = 'resources/ios/icon/';

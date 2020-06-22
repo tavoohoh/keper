@@ -15,7 +15,7 @@ export class DbService {
     public toastController: ToastController
   ) { }
 
-  public async getTasks(): Promise<TasksModel> {
+  public async getTasks(): Promise<any> {
     const today = new Date();
     let month = (today.getUTCMonth() + 1).toString();
     const day = today.getUTCDate();
@@ -30,8 +30,7 @@ export class DbService {
     const headers = { 'Content-Type': 'application/json' };
 
     try {
-      const tasks = await this.http.post(url, body, headers);
-      return tasks.data;
+      return this.http.post(url, body, headers);
     } catch (error) {
       this.errorToast(error.message || error);
     }

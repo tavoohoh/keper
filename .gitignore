@@ -29,8 +29,6 @@ npm-debug.log*
 /platforms
 /plugins
 /www
-/android
-/ios
 
 .env
 src/environments

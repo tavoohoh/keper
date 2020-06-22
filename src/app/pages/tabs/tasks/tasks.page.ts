@@ -14,10 +14,11 @@ export class TasksPage implements OnInit {
     private db: DbService
   ) { }
 
-  async ngOnInit() {
-    this.tasks = await this.db.getTasks();
-
-    console.log(this.tasks);
+  ngOnInit() {
+    this.db.getTasks().then((data: any) => {
+      console.log(JSON.parse(data.data));
+      this.tasks = JSON.parse(data.data);
+    });
   }
 
 }
