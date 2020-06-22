@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
+import { ToastController } from '@ionic/angular';
 import { HTTP } from '@ionic-native/http/ngx';
-import { Observable } from 'rxjs';
+import { TasksModel } from '../models';
 
 const urlApi = 'https://us-central1-hateno-94ef8.cloudfunctions.net/';
 
@@ -10,10 +11,11 @@ const urlApi = 'https://us-central1-hateno-94ef8.cloudfunctions.net/';
 export class DbService {
 
   constructor(
-    private http: HTTP
+    private http: HTTP,
+    public toastController: ToastController
   ) { }
 
-  public async getTasks(): Promise<any> {
+  public async getTasks(): Promise<TasksModel> {
     const today = new Date();
     let month = (today.getUTCMonth() + 1).toString();
     const day = today.getUTCDate();
@@ -27,82 +29,84 @@ export class DbService {
     const body = { 'date-time': `${year}-${month}-${day}` };
     const headers = { 'Content-Type': 'application/json' };
 
-    // try {
-    //   const tasks = this.http.post(url, body, headers);
-    //   console.log('tasks', tasks);
-    //   return tasks;
-    // } catch (error) {
-    //   console.log('error', error);
-    // }
+    try {
+      const tasks = await this.http.post(url, body, headers);
+      return tasks.data;
+    } catch (error) {
+      this.errorToast(error.message || error);
+    }
 
-    // const url = `${urlApi}weekTasksSlider`;
-    // const requestOptions = {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify({ 'date-time': `${year}-${month}-${day}` })
-    // };
-
-    // fetch(url, requestOptions)
-    //   .then(async response => {
-    //     const data = await response.json();
-    //     const dates = data.weekdaysTasks;
-    //   })
-    //   .catch(error => {
-    //     console.error('Error at componentDidMount:', error);
-    //   });
-
+    /*
     return {
       weekdaysTasks: [
         {
-          date: '2020-5-18',
-          tasks: {
-            cookingTask: 'Nestor',
-            dishwashingTask: 'Gustavo'
-          }
-        },
-        {
-          date: '2020-5-19',
-          tasks: {
-            cookingTask: 'Gustavo',
-            dishwashingTask: 'Rachel'
-          }
-        },
-        {
-          date: '2020-5-20',
+          date: 'Fri Jun 19 2020 20:41:31 GMT+0000 (UTC)',
+          weekday: 'F',
           tasks: {
             cookingTask: 'Rachel',
             dishwashingTask: 'Gustavo'
           }
         },
         {
-          date: '2020-5-21',
+          date: 'Sat Jun 20 2020 20:41:31 GMT+0000 (UTC)',
+          weekday: 'S',
           tasks: {
             cookingTask: 'Nestor',
             dishwashingTask: 'Rachel'
           }
         },
         {
-          date: '2020-5-22',
+          date: 'Sun Jun 21 2020 20:41:31 GMT+0000 (UTC)',
+          weekday: 'S',
           tasks: {
             cookingTask: 'Gustavo',
             dishwashingTask: 'Nestor'
           }
         },
         {
-          date: '2020-5-23',
+          date: 'Mon Jun 22 2020 20:41:31 GMT+0000 (UTC)',
+          weekday: 'M',
           tasks: {
             cookingTask: 'Rachel',
             dishwashingTask: 'Gustavo'
           }
         },
         {
-          date: '2020-5-24',
+          date: 'Tue Jun 23 2020 20:41:31 GMT+0000 (UTC)',
+          weekday: 'T',
           tasks: {
             cookingTask: 'Nestor',
             dishwashingTask: 'Rachel'
           }
+        },
+        {
+          date: 'Wed Jun 24 2020 20:41:31 GMT+0000 (UTC)',
+          weekday: 'W',
+          tasks: {
+            cookingTask: 'Gustavo',
+            dishwashingTask: 'Rachel'
+          }
+        },
+        {
+          date: 'Thu Jun 25 2020 20:41:31 GMT+0000 (UTC)',
+          weekday: 'T',
+          tasks: {
+            cookingTask: 'Rachel',
+            dishwashingTask: 'Nestor'
+          }
         }
       ]
     };
+    */
+  }
+
+  private async errorToast(message: string) {
+    const toast = await this.toastController.create({
+      message: 'Credentials are invalid',
+      duration: 3000,
+      position: 'top',
+      color: 'danger'
+    });
+    toast.present();
   }
 }

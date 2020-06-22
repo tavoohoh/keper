@@ -1,0 +1,42 @@
+.kp-tasks {
+  .kp-tasks-header,
+  .kp-tasks-entries {
+    display: grid;
+    grid-template-columns: 30px repeat(2, 1fr);
+    gap: var(--kp-padding-small);
+    margin-bottom: var(--kp-padding-small);
+  }
+
+  .kp-tasks-header > .kp-task-header-item {
+    color: var(--kp-color-gray-light);
+    font-size: var(--kp-font-size-small);
+    line-height: 1;
+    margin-bottom: 4px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  .kp-tasks-entries {
+    .kp-task-weekday,
+    .kp-task-item {
+      padding: var(--kp-padding-small);
+    }
+
+    .kp-task-weekday {
+      background-color: var(--kp-color-black);
+      text-align: center;
+    }
+
+    .kp-task-item {
+      background-color: var(--kp-color-gray-dark);
+      text-align: center;
+
+    }
+
+    &:nth-child(5) > .kp-task-item{
+      background-color: var(--kp-color-secondary);
+      color: var(--kp-color-black-darken);
+    }
+  }
+}

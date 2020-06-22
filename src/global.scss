@@ -49,15 +49,23 @@ body {
 .kp-card {
   align-self: center;
   display: grid;
-  gap: var(--kp-padding);
+  gap: 2rem;
 
   .kp-card-detail {
     .card-label {
       color: var(--kp-color-gray-light);
       font-size: var(--kp-font-size-small);
       line-height: 1;
-      margin-bottom: 4px;
+      margin-bottom: 6px;
       letter-spacing: 1px;
+      text-transform: uppercase;
+
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
     }
   
     .card-value {
