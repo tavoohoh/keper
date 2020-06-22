@@ -1,0 +1,56 @@
+<div class="kp-card kp-card-logo">
+  <div class="kp-logo"></div>
+
+  <form class="kp-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <!-- fields (email, password) -->
+    <div class="kp-form-body">
+
+      <!-- email -->
+      <div class="kp-field-container">
+        <label 
+          class="kp-field" 
+          [class.kp-field-invalid]="submitted && f.email.errors"
+          for="email">
+          <span class="kp-field-label">Email</span>
+          <input 
+            id="email"
+            type="text"
+            class="kp-field-input"
+            placeholder="email"
+            formControlName="email">
+        </label>
+        <div class="kp-field-errors" *ngIf="submitted && f.email.errors">
+          <span *ngIf="f.email.errors.required">Email is required</span>
+          <span *ngIf="f.email.errors.email">Email must be a valid email address</span>
+        </div>
+      </div>
+
+      <!-- password -->
+      <div class="kp-field-container">
+        <label
+          class="kp-field"
+          [class.kp-field-invalid]="submitted && f.password.errors"
+          for="password">
+          <span class="kp-field-label">Password</span>
+          <input
+            id="password"
+            type="text"
+            class="kp-field-input"
+            placeholder="password"
+            formControlName="password">
+        </label>
+        <div class="kp-field-errors" *ngIf="submitted && f.password.errors">
+          <span *ngIf="f.password.errors.required">Password is required</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- actions -->
+    <div class="kp-form-actions">
+      <button type="submit" class="kp-button">
+        Sign in
+      </button>
+    </div>
+  </form>
+</div>

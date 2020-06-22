@@ -32,3 +32,23 @@ body {
 *:focus {
   outline: none;
 }
+
+.kp-logo {
+  
+}
+
+// layout
+.kp-card {
+  display: grid;
+  padding: var(--kp-padding);
+}
+
+// form and fields
+.kp-form {
+  align-self: center;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--kp-padding);
+  width: 300px;
+  margin: 0 auto;
+}

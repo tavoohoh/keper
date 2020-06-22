@@ -1,6 +1,13 @@
 // mixins
-@mixin transition {
+@mixin kp-mixin-transition {
   transition: 0.3s ease-in-out;
+}
+
+@mixin kp-mixin-background-image($image) {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: $image;
 }
 
 :root {
