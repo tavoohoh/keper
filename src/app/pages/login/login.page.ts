@@ -41,6 +41,7 @@ export class LoginPage implements OnInit {
     this.loading.toggleLoading(true);
 
     if (this.form.invalid) {
+      this.loading.toggleLoading();
       return;
     }
 

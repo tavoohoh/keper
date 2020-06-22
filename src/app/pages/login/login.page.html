@@ -49,7 +49,7 @@
   
       <!-- actions -->
       <div class="kp-form-actions">
-        <button type="submit" class="kp-button">
+        <button type="submit" class="kp-button" *ngIf="!f.email.errors && !f.password.errors">
           Sign In
         </button>
         <!-- <button type="submit" class="kp-button kp-button-link" (click)="signInWithGoogle()">
