@@ -49,7 +49,45 @@ body {
 .kp-card {
   align-self: center;
   display: grid;
+  gap: var(--kp-padding);
+
+  .kp-card-detail {
+    .card-label {
+      color: var(--kp-color-gray-light);
+      font-size: var(--kp-font-size-small);
+      line-height: 1;
+      margin-bottom: 4px;
+      letter-spacing: 1px;
+    }
+  
+    .card-value {
+      font-weight: bold;
+      color: var(--kp-color-white);
+    }
+  }
+}
+
+.kp-page {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr;
+  overflow: hidden;
   padding: var(--kp-padding);
+  height: calc(100vh - 80px);
+
+  .kp-page-container {
+    margin-top: 2rem;
+
+    .kp-page-title {
+      color: var(--kp-color-secondary);
+      font-size: 2.5rem;
+      font-weight: lighter;
+    }
+
+    .kp-page-content {
+      margin-top: 2rem;
+    }
+  }
 }
 
 // form and fields
@@ -87,10 +125,11 @@ body {
       }
 
       .kp-field-label {
-        color: var(--kp-color-white);
+        color: var(--kp-color-gray-light);
         font-size: var(--kp-font-size-small);
         font-weight: bold;
         line-height: 1;
+        letter-spacing: 1px;
       }
 
       .kp-field-input {

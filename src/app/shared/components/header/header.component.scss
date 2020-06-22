@@ -2,11 +2,11 @@
   display: grid;
   grid-template-columns: 1fr auto;
   gap: var(--kp-padding);
-  padding: var(--kp-padding);
 }
 
 .kp-header-user {
   align-self: center;
+  font-size: var(--kp-font-size-small);
 }
 
 .kp-header-logout {
