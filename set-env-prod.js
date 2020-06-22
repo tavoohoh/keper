@@ -1,7 +1,7 @@
 const fs = require('file-system');
 
-const targetPath = './src/environments/environment.ts';
-const isProduction = false;
+const targetPath = './src/environments/environment.prod.ts';
+const isProduction = true;
 
 const envConfigFile =
 `export const environment = {

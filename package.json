@@ -6,9 +6,10 @@
   "scripts": {
     "ng": "ng",
     "env": "export $(cat .env | xargs)",
-    "config": "ts-node set-env.js",
-    "start": "npm run config && ng serve",
-    "build": "ng build",
+    "config:dev": "ts-node set-env.js",
+    "config:prod": "ts-node set-env-prod.js",
+    "start": "npm run config:dev && ng serve",
+    "build": "npm run config:prod && ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
