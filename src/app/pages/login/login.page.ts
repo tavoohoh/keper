@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { async } from '@angular/core/testing';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +18,8 @@ export class LoginPage implements OnInit {
   constructor(
     public authService: AuthenticationService,
     public router: Router,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    public toastController: ToastController
   ) { }
 
   ngOnInit() {
@@ -38,12 +41,19 @@ export class LoginPage implements OnInit {
     }
 
     this.authService.signIn(this.form.value)
-      .then((res) => this.router.navigateByUrl('tabs'))
-      .catch((error) => window.alert(error.message));
+      .then(() => this.router.navigateByUrl('tabs'))
+      .catch(async () => {
+        const toast = await this.toastController.create({
+          message: 'Credentials are invalid',
+          duration: 3000,
+          position: 'top',
+          color: 'danger'
+        });
+        toast.present();
+      });
   }
 
-  public loginWithGoogle() {
+  public signInWithGoogle() {
     this.authService.googleAuth();
   }
-
 }

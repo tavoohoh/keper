@@ -1,0 +1,13 @@
+<div class="kp-header">
+  <!-- user salutation -->
+  <span class="kp-header-user">
+    <ng-container *ngIf="user">
+      Hi {{ user.email }}
+    </ng-container>
+  </span>
+
+  <!-- logout -->
+  <button class="kp-button kp-header-logout" (click)="logout()">
+    Sign out
+  </button>
+</div>
