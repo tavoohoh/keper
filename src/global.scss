@@ -25,20 +25,29 @@
 // @import "~@ionic/angular/css/text-transformation.css";
 // @import "~@ionic/angular/css/flex-utils.css";
 
+* {
+  color: var(--kp-color-white);
+  outline: none;
+  box-sizing: border-box;
+}
+  
+
 body {
-  background-color: var(--kp-color-black-darken);
+  background-color: var(--kp-color-black);
 }
 
 *:focus {
   outline: none;
 }
 
-.kp-logo {
-  
+// layout
+.kp-container {
+  display: grid;
+  height: 100vh;
 }
 
-// layout
 .kp-card {
+  align-self: center;
   display: grid;
   padding: var(--kp-padding);
 }
@@ -49,6 +58,95 @@ body {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--kp-padding);
-  width: 300px;
+  width: 100%;
+  max-width: 300px;
   margin: 0 auto;
+
+  .kp-form-body {
+    display: grid;
+    gap: var(--kp-padding);
+
+    .kp-field-errors {
+      padding: 8px var(--kp-font-size-small) 0;
+      font-size: var(--kp-font-size-small);
+      color: var(--kp-color-error);
+    }
+
+    .kp-field {
+      height: 60px;
+      display: grid;
+      grid-template-rows: auto 1fr;
+      gap: 4px;
+      padding: var(--kp-font-size-small);
+      border: 2px solid var(--kp-color-gray-dark);
+      border-radius: var(--kp-font-size-small);
+      background-color: var(--kp-color-gray-dark);
+
+      &.kp-field-invalid {
+        border: 2px solid var(--kp-color-error);
+      }
+
+      .kp-field-label {
+        color: var(--kp-color-white);
+        font-size: var(--kp-font-size-small);
+        font-weight: bold;
+        line-height: 1;
+      }
+
+      .kp-field-input {
+        align-self: center;
+        background: none;
+        outline: none;
+        border: none;
+        box-shadow: none;
+        box-sizing: border-box;
+        background: unset;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        font-weight: bold;
+        line-height: 1;
+      
+        &::-webkit-input-placeholder {
+          font-weight: normal;
+        }
+      
+        &:-ms-input-placeholder {
+          font-weight: normal;
+        }
+      
+        &::placeholder {
+          font-weight: normal;
+        }
+      
+        &:focus,
+        *:focus {
+          outline: none;
+        }
+      }
+    }
+  }
+
+  .kp-form-actions {
+    padding-top: var(--kp-padding-small);
+  }
+}
+
+// button
+.kp-button {
+  align-self: center;
+  outline: none;
+  border: none;
+  box-shadow: none;
+  box-sizing: border-box;
+  background: unset;
+
+  background-color: var(--kp-color-black-darken);
+  border: 2px solid var(--kp-color-black-darken);
+  border-radius: var(--kp-font-size-small);
+  color: var(--kp-color-primary);
+  width: 100%;
+  padding: var(--kp-font-size-small);
+  font-weight: bold;
+  font-size: var(--kp-font-size-small);
 }

@@ -1,0 +1,86 @@
+@import "../../../../theme/variables.scss";
+
+$kp-animation-duration: 2s;
+$kp-defa-size: 100px;
+$kp-navi-size: 36px;
+$kp-load-size: 140px;
+
+.kp-logo {
+  height: $kp-defa-size;
+  width: $kp-defa-size;
+  margin: var(--kp-padding) auto;
+  padding: var(--kp-padding-small);
+  border-radius: var(--kp-padding);
+
+  &.kp-logo-navi { 
+    height: $kp-navi-size;
+    width: $kp-navi-size;
+    padding: 0;
+    margin: 0;
+    border-radius: unset;
+    background-color: transparent;
+  }
+
+  &.kp-logo-load {
+    height: $kp-load-size;
+    width: $kp-load-size;
+    padding: var(--kp-padding);
+    margin: 0 auto;
+    border-radius: unset;
+    background-color: transparent;
+    align-self: center;
+  }
+
+  svg {
+    .kp-logo-color-gold {
+      fill: var(--kp-color-primary);
+      animation: $kp-animation-duration ease infinite kpLogoAnimationGold;
+    }
+
+    .kp-logo-color-gold-var {
+      fill: var(--kp-color-primary-variation);
+      animation: $kp-animation-duration ease infinite kpLogoAnimationgoldVar;
+    }
+
+    .kp-logo-color-blue {
+      fill: var(--kp-color-secondary);
+      animation: $kp-animation-duration ease infinite kpLogoAnimationBlue;
+    }
+  }
+}
+
+@keyframes kpLogoAnimationGold {
+  0% {
+    fill: var(--kp-color-primary);
+  }
+  50% {
+    fill: var(--kp-color-primary-darken);
+  }
+  100% {
+    fill: var(--kp-color-primary);
+  }
+}
+
+@keyframes kpLogoAnimationgoldVar {
+  0% {
+    fill: var(--kp-color-primary-variation);
+  }
+  50% {
+    fill: var(--kp-color-primary-variation-darken)
+  }
+  100% {
+    fill: var(--kp-color-primary-variation)
+  }
+}
+
+@keyframes kpLogoAnimationBlue {
+  0% {
+    fill: var(--kp-color-secondary);
+  }
+  50% {
+    fill: var(--kp-color-secondary-darken);
+  }
+  100% {
+    fill: var(--kp-color-secondary);
+  }
+}
