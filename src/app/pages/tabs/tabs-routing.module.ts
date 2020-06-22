@@ -15,18 +15,8 @@ const routes: Routes = [
       {
         path: 'tasks',
         loadChildren: () => import('./tasks/tasks.module').then( m => m.TasksPageModule)
-      },
-      {
-        path: '',
-        redirectTo: '/tabs/tasks',
-        pathMatch: 'full'
       }
     ]
-  },
-  {
-    path: '',
-    redirectTo: '/tabs/tasks',
-    pathMatch: 'full'
   }
 ];
 

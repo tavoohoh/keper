@@ -6,6 +6,7 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firest
 import { ToastController } from '@ionic/angular';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { UserModel } from '../models';
+import { LoaderService } from './loader.service';
 
 // https://www.positronx.io/ionic-firebase-authentication-tutorial-with-examples/
 
@@ -17,11 +18,12 @@ export class AuthenticationService {
   private $userDataAsObservable: BehaviorSubject<UserModel> = new BehaviorSubject<UserModel>(null);
 
   constructor(
-    public afStore: AngularFirestore,
-    public ngFireAuth: AngularFireAuth,
-    public router: Router,
-    public ngZone: NgZone,
-    public toastController: ToastController
+    private afStore: AngularFirestore,
+    private ngFireAuth: AngularFireAuth,
+    private router: Router,
+    private ngZone: NgZone,
+    private toastController: ToastController,
+    private loading: LoaderService
   ) {
     this.ngFireAuth.authState.subscribe(user => {
       if (user) {
@@ -29,6 +31,8 @@ export class AuthenticationService {
         this.$userDataAsObservable.next(user);
         localStorage.setItem('user', JSON.stringify(user));
         JSON.parse(localStorage.getItem('user'));
+        this.loading.toggleLoading();
+        this.router.navigateByUrl('tabs');
       } else {
         localStorage.setItem('user', null);
         JSON.parse(localStorage.getItem('user'));

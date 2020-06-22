@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DbService } from 'src/app/services/db.service';
 import { TasksModel } from 'src/app/models';
+import { LoaderService } from 'src/app/services/loader.service';
 
 @Component({
   selector: 'app-tasks',
@@ -11,13 +12,16 @@ export class TasksPage implements OnInit {
   public tasks: TasksModel;
 
   constructor(
-    private db: DbService
+    private db: DbService,
+    private loading: LoaderService
   ) { }
 
   ngOnInit() {
+    this.loading.toggleLoading(true);
     this.db.getTasks().then((data: any) => {
       console.log(JSON.parse(data.data));
       this.tasks = JSON.parse(data.data);
+      this.loading.toggleLoading();
     });
   }
 

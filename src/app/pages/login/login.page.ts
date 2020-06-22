@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { async } from '@angular/core/testing';
+import { LoaderService } from 'src/app/services/loader.service';
+import { UserModel } from 'src/app/models';
 
 @Component({
   selector: 'app-login',
@@ -16,18 +18,14 @@ export class LoginPage implements OnInit {
   public submitted: boolean;
 
   constructor(
-    public authService: AuthenticationService,
-    public router: Router,
+    private authService: AuthenticationService,
+    private router: Router,
     private formBuilder: FormBuilder,
-    public toastController: ToastController
+    private toastController: ToastController,
+    private loading: LoaderService
   ) { }
 
   ngOnInit() {
-    if (this.authService.isLoggedIn) {
-      this.router.navigateByUrl('login');
-      return;
-    }
-
     this.form = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]]
@@ -40,13 +38,15 @@ export class LoginPage implements OnInit {
 
   public onSubmit() {
     this.submitted = true;
+    this.loading.toggleLoading(true);
 
     if (this.form.invalid) {
       return;
     }
 
     this.authService.signIn(this.form.value)
-      .then(() => this.router.navigateByUrl('tabs'))
+      .then(() => {
+      })
       .catch(async () => {
         const toast = await this.toastController.create({
           message: 'Credentials are invalid',
@@ -54,6 +54,7 @@ export class LoginPage implements OnInit {
           position: 'top',
           color: 'danger'
         });
+        this.loading.toggleLoading();
         toast.present();
       });
   }
