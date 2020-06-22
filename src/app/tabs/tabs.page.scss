@@ -1,0 +1,25 @@
+.kp-tabs {
+  height: 80px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--kp-padding);
+  padding: var(--kp-padding-small);
+
+  .kp-tab {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    &.focus {
+      outline: none;
+    }
+
+    &.kp-tab-tasks {
+      background-image: url("src/assets/subapps/app-tasks.png");
+    }
+
+    &.kp-tab-locker {
+      background-image: url("src/assets/subapps/app-config.png");
+    }
+  }
+}
