@@ -31,8 +31,7 @@ export class AuthenticationService {
         this.$userDataAsObservable.next(user);
         localStorage.setItem('user', JSON.stringify(user));
         JSON.parse(localStorage.getItem('user'));
-        this.loading.toggleLoading();
-        this.router.navigateByUrl('tabs');
+        this.router.navigateByUrl('tabs').then(() => this.loading.toggleLoading());
       } else {
         localStorage.setItem('user', null);
         JSON.parse(localStorage.getItem('user'));

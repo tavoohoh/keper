@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterContentInit } from '@angular/core';
 import { DbService } from 'src/app/services/db.service';
 import { TasksModel } from 'src/app/models';
 import { LoaderService } from 'src/app/services/loader.service';
@@ -8,7 +8,7 @@ import { LoaderService } from 'src/app/services/loader.service';
   templateUrl: './tasks.page.html',
   styleUrls: ['./tasks.page.scss'],
 })
-export class TasksPage implements OnInit {
+export class TasksPage implements OnInit, AfterContentInit {
   public tasks: TasksModel;
 
   constructor(
@@ -18,10 +18,14 @@ export class TasksPage implements OnInit {
 
   ngOnInit() {
     this.loading.toggleLoading(true);
-    this.db.getTasks().then((data: any) => {
-      console.log(JSON.parse(data.data));
-      this.tasks = JSON.parse(data.data);
-      this.loading.toggleLoading();
+  }
+
+  ngAfterContentInit() {
+    setTimeout(() => {
+      this.db.getTasks().then((data: any) => {
+        this.tasks = JSON.parse(data.data);
+        this.loading.toggleLoading();
+      });
     });
   }
 
