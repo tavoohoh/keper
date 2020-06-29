@@ -1,0 +1,83 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#111517"
+    android:padding="@dimen/widget_margin">
+
+    <LinearLayout
+        android:id="@+id/LinearContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/appwidget_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:contentDescription="@string/appwidget_title"
+            android:text="@string/appwidget_title"
+            android:textColor="@color/colorWhite"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:translationX="70dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/appwidget_cooking_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:contentDescription="@string/appwidget_cooking_title"
+                android:text="@string/appwidget_cooking_title"
+                android:textColor="#69b9cb"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/appwidget_cooking_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:background="@color/colorPrimary"
+                android:contentDescription="@string/appwidget_cooking_user"
+                android:padding="4sp"
+                android:text="@string/appwidget_cooking_user"
+                android:textColor="#69b9cb"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/appwidget_dishes_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:contentDescription="@string/appwidget_dishes_title"
+                android:text="@string/appwidget_dishes_title"
+                android:textColor="#69b9cb"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/appwidget_dishes_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:contentDescription="@string/appwidget_dishes_user"
+                android:padding="4sp"
+                android:text="@string/appwidget_dishes_user"
+                android:textColor="#69b9cb"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>
+
+
+

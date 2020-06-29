@@ -4,4 +4,10 @@
     <string name="title_activity_main">keper</string>
     <string name="package_name">com.tavoohoh.keper.app</string>
     <string name="custom_url_scheme">com.tavoohoh.keper.app</string>
+    <string name="appwidget_title">TODAY TASKS</string>
+    <string name="appwidget_cooking_title">Cooking</string>
+    <string name="appwidget_cooking_user">Nestor</string>
+    <string name="appwidget_dishes_title">Dishes</string>
+    <string name="appwidget_dishes_user">Gustavo</string>
+    <string name="add_widget">Add widget</string>
 </resources>
